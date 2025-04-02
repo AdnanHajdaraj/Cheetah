@@ -34,16 +34,76 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <h2>Login</h2>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            <form onSubmit={handleLogin}>
-                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                <button type="submit">Login</button>
+        <div style={styles.container}>
+            <h2 style={styles.header}>Login</h2>
+            {error && <p style={styles.error}>{error}</p>}
+            <form onSubmit={handleLogin} style={styles.form}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    style={styles.input}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    style={styles.input}
+                />
+                <button type="submit" style={styles.button}>Login</button>
             </form>
         </div>
     );
+};
+
+// Styles object for inline styling
+const styles = {
+    container: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+        backgroundColor: "#f0f0f0",
+        padding: "20px",
+    },
+    header: {
+        color: "#333",
+        marginBottom: "20px",
+    },
+    form: {
+        display: "flex",
+        flexDirection: "column",
+        width: "300px",
+        backgroundColor: "#fff",
+        padding: "20px",
+        borderRadius: "8px",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    },
+    input: {
+        padding: "10px",
+        marginBottom: "15px",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
+        fontSize: "16px",
+    },
+    button: {
+        padding: "10px",
+        backgroundColor: "#4CAF50",
+        color: "#fff",
+        border: "none",
+        borderRadius: "4px",
+        cursor: "pointer",
+        fontSize: "16px",
+    },
+    error: {
+        color: "red",
+        marginBottom: "10px",
+    },
 };
 
 export default Login;
