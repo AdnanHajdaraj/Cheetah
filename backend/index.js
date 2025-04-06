@@ -35,7 +35,7 @@ app.post('/login', (req, res) => {
         if (results.length === 0) return res.status(401).json({ message: 'User not found' });
 
         const user = results[0];
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = password === user.password;
 
         if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
 

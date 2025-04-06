@@ -13,7 +13,8 @@ router.post("/login", (req, res) => {
         if (results.length === 0) return res.status(400).json({ msg: "User not found" });
 
         const user = results[0];
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = password === user.password;
+        // const isMatch = await bcrypt.compare(password, user.password); // Uncomment if using hashed passwords
         if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
 
         const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: "1h" });
